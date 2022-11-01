@@ -5,7 +5,7 @@ interface PropsType {
   addTask: (newValue: string) => void
 }
 
-const ToDoForm: React.FC<PropsType> = (props) => {
+const ToDoForm: React.FC<PropsType> = ({ addTask }) => {
   const [inputValue, setInputValue] = useState('')
 
   const handleChange = (e: React.FormEvent<HTMLInputElement>): void => {
@@ -14,7 +14,7 @@ const ToDoForm: React.FC<PropsType> = (props) => {
 
   const handleSubmit = (e: React.SyntheticEvent): void => {
     e.preventDefault()
-    props.addTask(inputValue)
+    addTask(inputValue)
     setInputValue('')
   }
 

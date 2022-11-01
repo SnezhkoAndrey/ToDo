@@ -11,29 +11,29 @@ interface PropsType {
   completeTask: (newId: number) => void
 }
 
-const ToDoList: React.FC<PropsType> = (props) => {
+const ToDoList: React.FC<PropsType> = ({ todo, removeTask, completeTask }) => {
   const addComplete = (className: string): string => {
-    const theme = props.todo.complete ? ` ${style.complete}` : ''
+    const theme = todo.complete ? ` ${style.complete}` : ''
 
     return className + theme
   }
 
   return (
-    <div key={props.todo.id} className={style.todoList}>
+    <div key={todo.id} className={style.todoList}>
       <div
-        title={props.todo.complete ? 'click if not complete' : 'click if complete'}
+        title={todo.complete ? 'click if not complete' : 'click if complete'}
         className={addComplete(style.task)}
         onClick={() => {
-          props.completeTask(props.todo.id)
+          completeTask(todo.id)
         }}
       >
-        {props.todo.task}
+        {todo.task}
       </div>
       <div
         className={addComplete(style.deleteButton)}
         title='delete'
         onClick={() => {
-          props.removeTask(props.todo.id)
+          removeTask(todo.id)
         }}
       >
         X

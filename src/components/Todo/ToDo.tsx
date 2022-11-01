@@ -1,12 +1,10 @@
-import React, { useState, useContext } from 'react'
-import { Context } from '../../context/context'
+import React, { useContext } from 'react'
+import { GlobalContext } from '../../context/GlobalContext'
 import ToDoForm from '../ToDoForm'
 import ToDoList from '../ToDoList'
 
 const ToDo: React.FC = () => {
-  const initialTodo = useContext(Context)
-
-  const [todos, setTodos] = useState(initialTodo)
+  const { value: todos, setValue: setTodos } = useContext(GlobalContext)
 
   const addTask = (inputValue: string): void => {
     if (inputValue) {
@@ -28,14 +26,10 @@ const ToDo: React.FC = () => {
   return (
     <>
       <h2>To Do List</h2>
-      <div>
-        <ToDoForm addTask={addTask} />
-      </div>
-      <div>
-        {todos.map((td) => (
-          <ToDoList todo={td} key={td.id} removeTask={removeTask} completeTask={completeTask} />
-        ))}
-      </div>
+      <ToDoForm addTask={addTask} />
+      {todos.map((td) => (
+        <ToDoList todo={td} key={td.id} removeTask={removeTask} completeTask={completeTask} />
+      ))}
     </>
   )
 }

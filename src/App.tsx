@@ -1,15 +1,15 @@
 import React from 'react'
 import './App.css'
 import ToDo from './components/Todo'
-import { Context } from './context/context'
+import { GlobalContextProvider } from './context/GlobalContext'
 
 const App: React.FC = () => {
   return (
-    <Context.Provider value={[]}>
+    <GlobalContextProvider>
       <div className='App'>
         <ToDo />
       </div>
-    </Context.Provider>
+    </GlobalContextProvider>
   )
 }
 
