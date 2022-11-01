@@ -12,11 +12,17 @@ interface PropsType {
 }
 
 const ToDoList: React.FC<PropsType> = (props) => {
+  const addComplete = (className: string): string => {
+    const theme = props.todo.complete ? ` ${style.complete}` : ''
+
+    return className + theme
+  }
+
   return (
     <div key={props.todo.id} className={style.todoList}>
       <div
         title={props.todo.complete ? 'click if not complete' : 'click if complete'}
-        className={props.todo.complete ? `${style.task} ${style.complete}` : style.task}
+        className={addComplete(style.task)}
         onClick={() => {
           props.completeTask(props.todo.id)
         }}
@@ -24,9 +30,7 @@ const ToDoList: React.FC<PropsType> = (props) => {
         {props.todo.task}
       </div>
       <div
-        className={
-          props.todo.complete ? `${style.deleteButton} ${style.complete}` : style.deleteButton
-        }
+        className={addComplete(style.deleteButton)}
         title='delete'
         onClick={() => {
           props.removeTask(props.todo.id)

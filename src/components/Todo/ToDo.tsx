@@ -23,22 +23,20 @@ const ToDo: React.FC = () => {
     setTodos([...todos.filter((td) => td.id !== id)])
   }
   const completeTask = (id: number): void => {
-    setTodos([...todos.map((td) => (td.id === id ? { ...td, complete: !td.complete } : { ...td }))])
+    setTodos([...todos.map((td) => (td.id === id ? { ...td, complete: !td.complete } : td))])
   }
   return (
-    <div>
+    <>
       <h2>To Do List</h2>
       <div>
         <ToDoForm addTask={addTask} />
       </div>
       <div>
-        {todos.map((td) => {
-          return (
-            <ToDoList todo={td} key={td.id} removeTask={removeTask} completeTask={completeTask} />
-          )
-        })}
+        {todos.map((td) => (
+          <ToDoList todo={td} key={td.id} removeTask={removeTask} completeTask={completeTask} />
+        ))}
       </div>
-    </div>
+    </>
   )
 }
 

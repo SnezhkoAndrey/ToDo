@@ -11,8 +11,6 @@
 .todoForm button {
     width: 10%;
     height: 34px;
-}
-
-.todoForm button:hover {
     cursor: pointer;
 }
+
