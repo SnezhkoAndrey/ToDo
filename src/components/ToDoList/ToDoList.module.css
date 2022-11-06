@@ -1,0 +1,41 @@
+.todoList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  margin: 0 0 10px 0;
+}
+
+.task {
+  border: 1px solid rgb(34, 34, 34);
+  border-radius: 5px;
+  width: 30%;
+  min-height: 25px;
+  opacity: 1;
+}
+
+.task:hover {
+  cursor: pointer;
+}
+
+.task.complete {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+.deleteButton {
+  border: 1px solid rgb(34, 34, 34);
+  border-radius: 5px;
+  width: 4%;
+  height: 25px;
+  color: brown;
+  font-weight: 800;
+}
+
+.deleteButton:hover {
+  cursor: pointer;
+}
+
+.deleteButton.complete {
+  opacity: 0.5;
+}

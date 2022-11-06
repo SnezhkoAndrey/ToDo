@@ -1,0 +1,15 @@
+.todoForm {
+  margin: 0 0 20px 0;
+}
+
+.todoForm input {
+  padding: 0 0 0 10px;
+  width: 30%;
+  height: 30px;
+}
+
+.todoForm button {
+  width: 10%;
+  height: 34px;
+  cursor: pointer;
+}
