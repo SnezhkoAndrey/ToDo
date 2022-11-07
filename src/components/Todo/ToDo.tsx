@@ -1,5 +1,5 @@
-import React, { useContext } from 'react'
-import { GlobalContext } from '../../context/GlobalContext'
+import React, { useContext, useEffect } from 'react'
+import { GlobalContext, initialType } from '../../context/GlobalContext'
 import ToDoForm from '../ToDoForm'
 import ToDoList from '../ToDoList'
 
@@ -23,6 +23,15 @@ const ToDo: React.FC = () => {
   const completeTask = (id: number): void => {
     setTodos([...todos.map((td) => (td.id === id ? { ...td, complete: !td.complete } : td))])
   }
+
+  useEffect(() => {
+    const todos = JSON.parse(localStorage.getItem('todos') as string) as initialType[]
+    console.log(todos)
+    if (todos) {
+      setTodos(todos)
+    }
+  }, [])
+
   return (
     <>
       <h2>To Do List</h2>

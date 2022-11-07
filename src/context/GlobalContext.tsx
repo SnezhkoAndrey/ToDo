@@ -1,17 +1,16 @@
 import React, { createContext, useState } from 'react'
 
-/* eslint-disable-next-line */
-export const GlobalContext = createContext({} as contextType)
+export const GlobalContext = createContext({
+  value: [] as initialType[],
+  setValue: (value: initialType[]) => {
+    // change context
+  },
+})
 
-interface initialType {
+export interface initialType {
   id: number
   task: string
   complete: boolean
-}
-
-interface contextType {
-  value: initialType[]
-  setValue: React.Dispatch<React.SetStateAction<initialType[]>>
 }
 
 interface Props {
@@ -21,9 +20,14 @@ interface Props {
 export const GlobalContextProvider: React.FC<Props> = ({ children }) => {
   const [value, setValue] = useState([] as initialType[])
 
+  const changeHandler = (value: initialType[]): void => {
+    setValue(value)
+    localStorage.setItem('todos', JSON.stringify(value))
+  }
+
   const providerValue = {
     value,
-    setValue,
+    setValue: changeHandler,
   }
   return <GlobalContext.Provider value={providerValue}> {children} </GlobalContext.Provider>
 }
