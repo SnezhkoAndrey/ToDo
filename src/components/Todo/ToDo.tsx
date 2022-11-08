@@ -26,7 +26,6 @@ const ToDo: React.FC = () => {
 
   useEffect(() => {
     const todos = JSON.parse(localStorage.getItem('todos') as string) as initialType[]
-    console.log(todos)
     if (todos) {
       setTodos(todos)
     }

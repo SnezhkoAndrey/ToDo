@@ -13,3 +13,13 @@
   height: 34px;
   cursor: pointer;
 }
+
+@media (max-width: 450px) {
+  .todoForm input {
+    width: 60%;
+  }
+
+  .todoForm button {
+    width: 20%;
+  }
+}
