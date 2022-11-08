@@ -39,3 +39,13 @@
 .deleteButton.complete {
   opacity: 0.5;
 }
+
+@media (max-width: 450px) {
+  .task {
+    width: 60%;
+  }
+
+  .deleteButton {
+    width: 8%;
+  }
+}
